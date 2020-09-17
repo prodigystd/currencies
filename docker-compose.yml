@@ -1,0 +1,45 @@
+version: '3'
+services:
+  php-fpm:
+    container_name: currencies_php
+    build: docker/php-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/var/www/html/
+    depends_on: 
+      - db
+    links:
+      - db
+    networks:
+      - internal
+    # command: bash -c "php yii migrate; & php-fpm -F"
+  nginx:
+    container_name: currencies_nginx 
+    build: docker/nginx 
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/
+    links:
+      - db
+      - php-fpm
+    networks:
+      - internal
+  db:
+    container_name: currencies_db
+    ports:
+      - 5432:5432
+    image: postgres:10.1
+    restart: always
+    volumes:
+      - ./:/var/www/html/
+    environment:
+      - POSTGRES_DB=currencies_db
+      - POSTGRES_USER=currencies_user
+      - POSTGRES_PASSWORD=currencies_password
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
