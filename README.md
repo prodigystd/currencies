@@ -7,11 +7,15 @@ rate — курс валюты к рублю
 insert_dt – время обновления валюты
 
 Должна быть консольная команда для обновления данных в таблице currency. 
+
 Данные по курсам валют можно взять отсюда: http://www.cbr.ru/scripts/XML_daily.asp
+
 Таблица в БД должна создаваться через миграции yii.
 
 Реализовать 2 REST API метода:
+
 GET /currencies — должен возвращать список курсов валют с возможность пагинации
+
 GET /currency/ — должен возвращать курс валюты для переданного id
 
 # Установка
@@ -27,8 +31,8 @@ docker-compose up
 
 Параметры: page, per-page
 
-GET localhost/currencies?page=1&per-page=34 
+http://localhost/currencies?page=1&per-page=34 
 
 Получить курс валюты для переданного id
 
-GET localhost/currency/:id
+http://localhost/currency/:id
