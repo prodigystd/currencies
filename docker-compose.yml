@@ -13,7 +13,7 @@ services:
       - db
     networks:
       - internal
-    command: bash -c "composer update; php yii migrate; php yii currency/update & php-fpm -F"
+    command: bash -c "composer update; php yii migrate --interactive=0; php yii currency/update & php-fpm -F"
   nginx:
     container_name: currencies_nginx 
     build: docker/nginx 
