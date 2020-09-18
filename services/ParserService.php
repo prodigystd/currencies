@@ -6,6 +6,10 @@ namespace app\services;
 use app\forms\CurrencyForm;
 use yii\httpclient\Client;
 
+/**
+ * Class ParserService
+ * @package app\services
+ */
 class ParserService
 {
     const URL = 'http://www.cbr.ru/scripts/XML_daily.asp';

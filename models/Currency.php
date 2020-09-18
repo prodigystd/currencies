@@ -3,7 +3,6 @@
 namespace app\models;
 
 use DateTime;
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 

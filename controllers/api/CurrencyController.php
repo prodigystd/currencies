@@ -4,7 +4,10 @@ namespace app\controllers\api;
 
 use app\repositories\CurrencyRepository;
 
-
+/**
+ * Class CurrencyController
+ * @package app\controllers\api
+ */
 class CurrencyController extends BaseApiController
 {
     /**
