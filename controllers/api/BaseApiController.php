@@ -3,7 +3,6 @@
 namespace app\controllers\api;
 
 use yii\rest\Controller;
-use yii\web\NotFoundHttpException;
 
 class BaseApiController extends Controller
 {
