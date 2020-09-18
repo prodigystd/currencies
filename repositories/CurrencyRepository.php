@@ -7,6 +7,8 @@ use app\models\Currency;
 use DateTime;
 use Exception;
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\helpers\VarDumper;
 
 class CurrencyRepository
@@ -31,6 +33,26 @@ class CurrencyRepository
             ->execute();
 
         return $affectedRowsCount > 0;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAll(): array
+    {
+        $query = Currency::find();
+        $pagination = new Pagination(['totalCount' => $query->count(), 'defaultPageSize' => 34]);
+
+        $currencies = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->orderBy([
+                'insert_dt' => SORT_DESC,
+                'name' => SORT_ASC
+            ])
+            ->asArray()
+            ->all();
+
+        return $currencies;
     }
 
 }

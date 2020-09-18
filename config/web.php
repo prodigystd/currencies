@@ -49,7 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'GET,OPTIONS currencies' => 'api/currency/index'
+                'GET,OPTIONS currencies' => 'api/currency/index',
+                'GET,OPTIONS currency' => 'api/currency/getById'
             ],
         ],
 

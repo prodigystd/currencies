@@ -2,8 +2,11 @@
 
 namespace app\controllers\api;
 
+use app\models\Currency;
+use app\repositories\CurrencyRepository;
 use app\services\ParserService;
 use Yii;
+use yii\helpers\VarDumper;
 use yii\web\Response;
 use yii\rest\Controller;
 
@@ -11,22 +14,28 @@ use yii\rest\Controller;
 class CurrencyController extends Controller
 {
     /**
-     * @var ParserService
+     * @var CurrencyRepository
      */
-    private $parserService;
+    private $currencyRepository;
 
-    public function __construct($id, $module, ParserService $parserService, $config = [])
+    public function __construct($id, $module, CurrencyRepository $currencyRepository, $config = [])
     {
         parent::__construct($id, $module, $config);
-        $this->parserService = $parserService;
+        $this->currencyRepository = $currencyRepository;
     }
 
 
+    //page & per-page params
     public function actionIndex()
     {
-        return $this->parserService->getData();
+        return $this->currencyRepository->getAll();
     }
 
+
+    public function actionGetById()
+    {
+
+    }
 
 
 }
