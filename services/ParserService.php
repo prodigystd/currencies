@@ -29,7 +29,7 @@ class ParserService
         foreach ($currenciesData as $currencyData) {
             $form = new CurrencyForm();
             $form->name = $currencyData['Name'];
-            $form->rate = $currencyData['Value'];
+            $form->rate = str_replace(',', '.', $currencyData['Value']);
             $forms[] = $form;
 
         }

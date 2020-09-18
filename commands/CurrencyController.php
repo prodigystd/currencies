@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\repositories\CurrencyRepository;
 use app\services\ParserService;
 use yii\console\Controller;
 use yii\console\ExitCode;
@@ -17,16 +18,25 @@ class CurrencyController extends Controller
      * @var ParserService
      */
     private $parserService;
+    /**
+     * @var CurrencyRepository
+     */
+    private $currencyRepository;
 
-    public function __construct($id, $module, ParserService $parserService, $config = [])
+    public function __construct($id,
+                                $module,
+                                ParserService $parserService,
+                                CurrencyRepository $currencyRepository,
+                                $config = [])
     {
         parent::__construct($id, $module, $config);
         $this->parserService = $parserService;
+        $this->currencyRepository = $currencyRepository;
     }
 
 
     /**
-     * @throws \yii\httpclient\Exception
+     * @throws \yii\httpclient\Exception|\yii\db\Exception
      */
     public function actionUpdate()
     {
@@ -39,6 +49,9 @@ class CurrencyController extends Controller
             }
         }
 
+        $this->currencyRepository->save($forms);
+
+        echo 'Currencies were successfully parsed and saved' . PHP_EOL;
         return ExitCode::OK;
     }
 }
