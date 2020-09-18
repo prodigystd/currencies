@@ -5,11 +5,8 @@ namespace app\repositories;
 use app\forms\CurrencyForm;
 use app\models\Currency;
 use DateTime;
-use Exception;
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
-use yii\helpers\VarDumper;
 
 class CurrencyRepository
 {
@@ -54,5 +51,18 @@ class CurrencyRepository
 
         return $currencies;
     }
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function getById(int $id): array
+    {
+        return Currency::find()
+            ->where(['id' => $id])
+            ->asArray()
+            ->all();
+    }
+
 
 }

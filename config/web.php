@@ -50,7 +50,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'GET,OPTIONS currencies' => 'api/currency/index',
-                'GET,OPTIONS currency' => 'api/currency/getById'
+                'GET,OPTIONS currency/<id:\d+>' => 'api/currency/get-by-id'
             ],
         ],
 

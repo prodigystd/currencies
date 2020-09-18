@@ -2,16 +2,10 @@
 
 namespace app\controllers\api;
 
-use app\models\Currency;
 use app\repositories\CurrencyRepository;
-use app\services\ParserService;
-use Yii;
-use yii\helpers\VarDumper;
-use yii\web\Response;
-use yii\rest\Controller;
 
 
-class CurrencyController extends Controller
+class CurrencyController extends BaseApiController
 {
     /**
      * @var CurrencyRepository
@@ -28,13 +22,21 @@ class CurrencyController extends Controller
     //page & per-page params
     public function actionIndex()
     {
-        return $this->currencyRepository->getAll();
+        try {
+            return $this->currencyRepository->getAll();
+        } catch (\Exception $exception) {
+            return $this->errorResponse($exception->getMessage());
+        }
     }
 
 
-    public function actionGetById()
+    public function actionGetById(int $id)
     {
-
+        try {
+            return $this->currencyRepository->getById($id);
+        } catch (\Exception $exception) {
+            return $this->errorResponse($exception->getMessage());
+        }
     }
 
 
