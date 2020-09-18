@@ -4,7 +4,6 @@ namespace app\services;
 
 
 use app\forms\CurrencyForm;
-use yii\helpers\VarDumper;
 use yii\httpclient\Client;
 
 class ParserService
