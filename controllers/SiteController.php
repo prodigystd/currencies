@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\controllers\api\BaseApiController;
+use app\controllers\BaseApiController;
 
 class SiteController extends BaseApiController
 {

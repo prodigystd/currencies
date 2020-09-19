@@ -49,8 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'GET,OPTIONS currencies' => 'api/currency/index',
-                'GET,OPTIONS currency/<id:\d+>' => 'api/currency/get-by-id'
+                'GET,OPTIONS currencies' => 'currency/index',
+                'GET,OPTIONS currency/<id:\d+>' => 'currency/get-by-id'
             ],
         ],
 
@@ -64,14 +64,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['127.0.0.1'],
+//        'allowedIPs' => ['127.0.0.1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['127.0.0.1'],
+//        'allowedIPs' => ['127.0.0.1',],
     ];
 }
 
